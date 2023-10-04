@@ -6,7 +6,7 @@ session_start();
 include('db.php');
 
 // Initialize variables for error messages
-$username_error = $password_error =  $email_error = "";
+$username_error = $password_error =  $email_error = $phoneno_error = "";
 $registration_successful = false;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['user_username'];
     $email =$_POST['user_email'];
     $password = $_POST['user_password'];
+    $phoneno = $_POST['user_phoneno'];
 
     // Validate username (adjust validation criteria as needed)
     if (empty($username)) {
@@ -29,15 +30,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $password_error = 'Please enter a password';
     }
 
+    if (empty($phoneno)) {
+        $password_error = 'Please enter a phone number';
+    }
+
     // If there are no validation errors, proceed with registration
     if (empty($username_error) && empty($password_error)) {
         // Hash the password before storing it
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         // Insert user data into the database
-        $sql = "INSERT INTO users (user_username, user_email, user_password) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO users (user_username, user_email, user_phoneno, user_password) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sss", $username, $email, $hashed_password);
+        $stmt->bind_param("ssss", $username, $email, $phoneno, $hashed_password);
 
         if ($stmt->execute()) {
             // Registration successful
@@ -99,6 +104,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <input type="user_password" class="form-control" id="user_password" name="user_password" required>
                                 <small class="error"><?php echo $password_error; ?></small>
                             </div>
+                            <div class="form-group">
+                                <label for="user_phoneno">Phone number</label>
+                                <input type="user_phoneno" class="form-control" id="user_phoneno" name="user_phoneno" required>
+                                <small class="error"><?php echo $phoneno_error; ?></small>
+                            </div>
+                        
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary">Register</button>
                             </div>

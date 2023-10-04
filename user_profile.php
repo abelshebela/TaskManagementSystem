@@ -24,6 +24,7 @@ if ($result->num_rows === 1) {
     $row = $result->fetch_assoc();
     $username = htmlspecialchars($row['user_username']);
     $email = htmlspecialchars($row['user_email']);
+    $phoneno = htmlspecialchars($row['user_phoneno']);
     // Add other user profile information as needed
 }
 ?>
@@ -83,6 +84,7 @@ if ($result->num_rows === 1) {
         <div class="card-body">
             <h5 class="card-title">Username: <?php echo $username; ?></h5>
             <p class="card-text">Email: <?php echo $email; ?></p>
+            <p class="card-text">Phone number: <?php echo $phoneno; ?></p>
             <!-- Display other user profile information here -->
         </div>
     </div>
