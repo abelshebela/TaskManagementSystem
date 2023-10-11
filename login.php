@@ -63,20 +63,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .error {
             color: red;
         }
-        .logo {
-            width: 100px; /* Adjust the width as needed */
-            height: auto; /* Maintain aspect ratio */
+        .custom-small-logo {
+            width: 5%;
+            height: 5%;
         }
     </style>
 </head>
 <body>
+    <div class=" logo-container box m-3">
+        <img class="logo custom-small-logo" src="assets/task-logo.png" alt="Task Management System Logo">
+    </div>
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <div class="text-center">
-                    <img class="logo" src="your-logo.png" alt="Task Management System Logo">
-                </div>
-                <div class="card">
+                <div class="card d-flex justify-content-center">
                     <div class="card-body">
                         <h2 class="card-title text-center">Login</h2>
                         <form method="POST" action="login.php">
@@ -91,7 +91,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <small class="error"><?php echo $password_error; ?></small>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" class="btn btn-primary box m-3">Login</button>
+                            </div>
+
+                            <div class="text-center box m-5">
+                                <p>Don't have an account? <a href="register.php">Register</a></p>
                             </div>
                         </form>
                         <?php

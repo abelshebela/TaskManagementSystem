@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         // Insert user data into the database
-        $sql = "INSERT INTO users (user_username, user_email, user_phoneno, user_password) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO users (user_username, user_email, user_phoneno,g user_password) VALUES (?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssss", $username, $email, $phoneno, $hashed_password);
 
@@ -72,20 +72,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         .error {
             color: red;
         }
-        .logo {
-            width: 100px; /* Adjust the width as needed */
-            height: auto; /* Maintain aspect ratio */
+        .custom-small-logo {
+            width: 5%;
+            height: 5%;
         }
     </style>
 </head>
 <body>
+
+    <div class="box m-3">
+        <img class="logo custom-small-logo" src="assets/task-logo.png" alt="Task Management System Logo">
+    </div>
+
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-6 mx-auto">
-                <div class="text-center">
-                    <img class="logo" src="your-logo.png" alt="Task Management System Logo">
-                </div>
-                <div class="card">
+                <div class="card d-flex justify-content-center">
                     <div class="card-body">
                         <h2 class="card-title text-center">Registration</h2>
                         <form method="POST" action="register.php">
@@ -111,7 +113,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
                         
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary">Register</button>
+                                <button type="submit" class="btn btn-primary box m-2">Register</button>
+                            </div>
+                            <div class="text-center box m-5">
+                                <p>Already have an account? <a href="login.php">login</a></p>
                             </div>
                         </form>
                         <?php

@@ -22,35 +22,38 @@ if (!isset($_SESSION['user_id'])) {
         .nav-link {
             cursor: pointer;
         }
-        .logo {
-            width: 100px; /* Adjust the width as needed */
-            height: auto; /* Maintain aspect ratio */
+        .custom-small-logo {
+            width: 6%;
+            height: 6%;
+        }
+        .nav-item {
+            white-space: nowrap;
         }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar nav-item navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
-            <img class="logo" src="your-logo.png" alt="Task Management System Logo">
+            <img class="logo custom-small-logo" src="assets/task-logo.png" alt="Task Management System Logo">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+            <ul class="navbar-nav ml-auto box m-3 ">
+                <li class="nav-item d-inline">
                     <a class="nav-link" href="view_tasks.php">View Tasks</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-inline">
                     <a class="nav-link" href="create_task.php">Create Task</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-inline">
                     <a class="nav-link" href="update_status.php">Update Status</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-inline">
                     <a class="nav-link" href="user_profile.php">User Profile</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-inline">
                     <a class="nav-link" href="logout.php">Logout</a>
                 </li>
             </ul>
